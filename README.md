@@ -1,7 +1,6 @@
 # NaiveMatrixLib 帆帆的简易矩阵计算库
-A simple stdlib-based C++ complex &amp; real matrix library, with matrix inversion, left division (A\b) and determinant calculation.<br />
+A simple C++ stdlib-based complex &amp; real matrix library, with matrix inversion, left division (A\b) and determinant calculation.<br />
 这是一个使用 C++ 标准库实现的简易复数及实数矩阵库，包含求逆矩阵、反斜杠除法 (A\b) 及行列式计算。
-
 
 ## Features 特点
 * Designed for users who don't want to use large linear algebra libs.
@@ -114,3 +113,5 @@ pinv2(A) * b (== A \ b) : 3 x 1 Complex Matrix:
 * Permute Sign Calculation, page5 https://www.math.rutgers.edu/docman-lister/math-main/academics/course-materials/250/assignments/1493-250c-lab3-sakai-pdf/file
 * LU Decomposition C++ Implementation, https://blog.csdn.net/xx_123_1_rj/article/details/39553809
 * LU Decomposition, https://www.math.ucdavis.edu/~linear/old/notes11.pdf
+<br /><br /><br />
+<p align="center">*** Project by Fanseline in Ericsson ***</p>
