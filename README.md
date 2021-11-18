@@ -54,6 +54,7 @@ int main(int argc, char **argv)
     showMatrix(matMul(pinv(matA), matb), "pinv(A) * b");
     showMatrix(matMul(pinv2(matA), matb), "pinv2(A) * b (== A \\ b)");
     std::cin.get();
+    return 0;
 }
 ```
 ### Output 输出
