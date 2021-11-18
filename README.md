@@ -1,6 +1,6 @@
 # NaiveMatrixLib 帆帆的简易矩阵计算库
-A simple C++ complex &amp; real matrix library, with matrix inversion, left division (A\b) and determinant calculation.<br />
-这是一个使用 C++ 实现的简易复数及实数矩阵库，包含求逆矩阵、反斜杠除法 (A\b) 及行列式计算。
+A simple stdlib-based C++ complex &amp; real matrix library, with matrix inversion, left division (A\b) and determinant calculation.<br />
+这是一个使用 C++ 标准库实现的简易复数及实数矩阵库，包含求逆矩阵、反斜杠除法 (A\b) 及行列式计算。
 
 
 ## Features 特点
@@ -8,7 +8,7 @@ A simple C++ complex &amp; real matrix library, with matrix inversion, left divi
 * Only used C++ standard library, easy to learn and modify (Each file less than 600 lines).
 * Header files only, separated complex and real matrix library.
 * No recursive algorithm (using LU and Cholesky decomposition). Reliable for 1000 x 1000 and larger matrices.
-- 如果你不想使用大型线性代数库来计算这些，那你来对地方了（什么？你只是想交作业？）。
+- 如果你不想使用大型线性代数库来计算这些，那你来对地方了。（什么，你只是想交作业？）
 - 仅使用C++标准库，无论是学习思维还是修改都很简单（每份代码都少于600行）。
 - 仅使用头文件即可，复数和实数矩阵库是分开的。
 - 没有递归运算（基于 LU 和 Cholesky 分解）。可对1000x1000及更大的矩阵使用。
