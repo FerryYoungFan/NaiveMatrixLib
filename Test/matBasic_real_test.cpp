@@ -79,6 +79,27 @@ i_real_matrix genTestMatrixb(const std::size_t nAnt, const std::size_t nEq)
     return resMat;
 }
 
+
+bool CheckIdentity(const i_real_matrix& mat)
+{
+    const float EPS = 1.0e-20;
+
+    double sumErrSqr = 0;
+    for (std::size_t r = 0; r < mat.size(); r++)
+    {
+        const i_real_vector& row = mat[r];
+        for (std::size_t c = 0; c < row.size(); c++)
+        {
+            i_float_t diff = c == r ? row[c] - i_float_t(1.0) : row[c];
+            sumErrSqr = diff * diff;
+        }
+    }
+    
+    return sumErrSqr < EPS;
+}
+
+
+
 void pinvTest(bool doLargeMatTest = true)
 {
     std::cout << "\n\n******************** pinv test ********************\n\n";
@@ -106,7 +127,13 @@ void pinvTest(bool doLargeMatTest = true)
         {-6.0, 3.0, 9.0, 1.0}};
     std::cout << "rank(matC) = " << rank(matC) << "\n";
     showMatrix(matC, "matC");
-    showMatrix(inv(matC), "inv(matC)");
+
+    i_real_matrix invMatC = inv(matC);
+    showMatrix(invMatC, "inv(matC)");
+    bool isIdentity = CheckIdentity(matMul(matC, invMatC));
+    if (!isIdentity)
+        std::cout << "not identity";
+
     showMatrix(pinv(matC), "pinv(matC)");
     showMatrix(pinv2(matC), "pinv2(matC)");
     std::cout << "\n\n";
