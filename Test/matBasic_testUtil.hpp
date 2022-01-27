@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <sys/time.h> // Performance test timer
+#include <chrono>
 
 
 class TestTimer
@@ -13,7 +13,7 @@ public:
     void tic()
     {
         m_running = true;
-        gettimeofday(&m_time_start, NULL);
+        m_time_start = std::chrono::steady_clock::now();
     }
 
     double toc(const char *printInfo = nullptr)
@@ -21,9 +21,11 @@ public:
         double res = 0.0;
         if (m_running)
         {
-            gettimeofday(&m_time_end, NULL);
+            m_time_end = std::chrono::steady_clock::now();
             m_running = false;
-            res = static_cast<double>(m_time_end.tv_sec - m_time_start.tv_sec) + static_cast<double>(m_time_end.tv_usec - m_time_start.tv_usec) / 1000000.0;
+            auto time_diff = m_time_end - m_time_start;
+            auto microSecs = std::chrono::duration_cast<std::chrono::microseconds>(time_diff).count();
+            res = static_cast<double>(microSecs) / 1.0e6;
             if (nullptr != printInfo)
             {
                 std::cout << "Time elapsed - " << printInfo << ": ";
@@ -45,15 +47,8 @@ public:
     }
 
 private:
-    struct timeval m_time_start
-    {
-        0, 0
-    };
-
-    struct timeval m_time_end
-    {
-        0, 0
-    };
+    std::chrono::steady_clock::time_point m_time_start;
+    std::chrono::steady_clock::time_point m_time_end;
 
     bool m_running{false};
 };
